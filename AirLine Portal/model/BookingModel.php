@@ -1,4 +1,9 @@
 <?php
+
+/*
+ This model contains all the methods relevant to a particular booking.
+ */
+
 class BookingModel {
 
 	private $userPresent;
@@ -41,7 +46,7 @@ class BookingModel {
 	}
 
 	function deleteBookings($ticketId){
-		
+
 		ini_set('display_errors', 'On');
 		$db = "w4111c.cs.columbia.edu:1521/adb";
 		$conn = oci_connect("kpg2108", "test123", $db);
@@ -49,10 +54,10 @@ class BookingModel {
 		$stmt11 = oci_parse($conn,$stmt10);
 		$result11=oci_execute($stmt11);
 		$var;
-		while ( $row = oci_fetch_row($stmt11)) 
-			{
-				$var=$row[0];
-			}
+		while ( $row = oci_fetch_row($stmt11))
+		{
+			$var=$row[0];
+		}
 		$var = $_SESSION['userMiles']-$var;
 		if($var<0)
 		{
@@ -88,13 +93,13 @@ class BookingModel {
 		$flightDetails=unserialize($_SESSION['flightDetailsForBooking']);
 		$flightDetails->setFare($_SESSION['lastPurchased']);
 		$userId=$_SESSION['userId'];
-		
+
 		$modeOfPayment = $_SESSION['modeOfPayment'];
 		ini_set('display_errors', 'On');
 		$db = "w4111c.cs.columbia.edu:1521/adb";
 		$conn = oci_connect("kpg2108", "test123", $db);
 		$ticketid = rand();
-		
+
 		$stmt = "insert into ticket values('".$ticketid."','".rand()."','".$flightDetails->getFlightClassId()."','".$userId."','".date('m/d/Y')."','".$flightDetails->getFlightMiles()."')";
 		$stmt1 = oci_parse($conn, $stmt);
 		$result2=oci_execute($stmt1);
@@ -116,7 +121,7 @@ class BookingModel {
 			return 1;
 		}
 
-}
+	}
 
 }
 ?>

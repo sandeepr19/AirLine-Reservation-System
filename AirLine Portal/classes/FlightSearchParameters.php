@@ -1,5 +1,9 @@
 <?php
 
+/*
+ This class is used to store the parameters used for searching
+ a flight.
+ */
 class FlightSearchParameters {
 	private $_source;
 	private $_destination;

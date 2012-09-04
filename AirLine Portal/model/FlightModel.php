@@ -1,4 +1,9 @@
 <?php
+
+/*
+ This model contains all the methods relevant to a particular flight.
+ */
+
 class FlightModel {
 
 	private $userPresent;
@@ -18,7 +23,7 @@ class FlightModel {
 		 '".$flightSearchParameters->getDestination()."' and R.SOURCE_AIRPORT_ID = '".$flightSearchParameters->getSource()."' ) and S.AIRPORT_ID = '".$flightSearchParameters->getSource()."'
 		 and D.AIRPORT_ID = '".$flightSearchParameters->getDestination()."'";
 		 */
-		
+
 		$stmt =  oci_parse($conn,"Select fc.flight_class_id, Flight_desc,Class_desc,departure_date,arrival_date,S.A_Name, D.A_Name,Total_cap,
 		No_Of_seats,cost,flight_miles from Airport S, Airport D, flight_class fc join Flight f on FC.FLIGHT_ID = F.FLIGHT_ID join Class c on FC.CLASS_ID = C.CLASS_ID where f.Flight_id in 
 		(Select schedule_id from Schedule where (To_date('".$flightSearchParameters->getBookingDate()."','DD/MM/YYYY')>= Start_date and To_date('".$flightSearchParameters->getBookingDate()."',
@@ -30,19 +35,19 @@ class FlightModel {
 		oci_close($conn);
 		$arrayOfFlights= array();
 		while ( $row = oci_fetch_row($stmt)) {
-				$flightDetails =  new FlightDetails();
-				$flightDetails->setFlightClassId($row[0]);
-				$flightDetails->setNumberOfTickets(1);
-				$flightDetails->setflightName($row[1]);
-				$flightDetails->setclassName($row[2]);
-				$flightDetails->setsource($row[5]);
-				$flightDetails->setdestination($row[6]);
-				$flightDetails->setarrivalTime($row[4]);
-				$flightDetails->setdepartureTime($row[3]);
-				$flightDetails->setseatsAvailable($row[8]);
-				$flightDetails->setfare($row[9]);
-				$flightDetails->setFlightMiles($row[10]);
-				array_push($arrayOfFlights, $flightDetails);
+			$flightDetails =  new FlightDetails();
+			$flightDetails->setFlightClassId($row[0]);
+			$flightDetails->setNumberOfTickets(1);
+			$flightDetails->setflightName($row[1]);
+			$flightDetails->setclassName($row[2]);
+			$flightDetails->setsource($row[5]);
+			$flightDetails->setdestination($row[6]);
+			$flightDetails->setarrivalTime($row[4]);
+			$flightDetails->setdepartureTime($row[3]);
+			$flightDetails->setseatsAvailable($row[8]);
+			$flightDetails->setfare($row[9]);
+			$flightDetails->setFlightMiles($row[10]);
+			array_push($arrayOfFlights, $flightDetails);
 		}
 
 		return $arrayOfFlights;
@@ -50,8 +55,8 @@ class FlightModel {
 
 
 	function getFlightDetails($flightClassId){
-		
-		
+
+
 		ini_set('display_errors', 'On');
 		$db = "w4111c.cs.columbia.edu:1521/adb";
 		$conn = oci_connect("kpg2108", "test123", $db);
@@ -73,7 +78,7 @@ class FlightModel {
 			$flightDetails->setfare($row[6]);
 			$flightDetails->setFlightMiles($row[7]);
 			$flightDetails->setSeatsAvailable($row[8]);
-			
+				
 		}
 		return $flightDetails;
 

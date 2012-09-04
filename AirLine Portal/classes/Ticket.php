@@ -1,12 +1,16 @@
 <?php
 
+/*
+ This class is used to store details relevant to a ticket.
+ */
+
 class Ticket {
 	private $_ticketId;
 	private $_eTicketNo;
 	private $_flightClassId;
 	private $_userId;
 	private $_bookingDate;
-	
+
 	function setticketId($ticketId) {
 		$this->$_ticketId = $ticketId;
 	}
@@ -42,7 +46,7 @@ class Ticket {
 	function getbookingDate() {
 		return $this->_bookingDate;
 	}
-	
+
 }
 
 ?>

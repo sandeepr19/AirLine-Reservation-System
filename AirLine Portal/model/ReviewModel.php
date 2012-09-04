@@ -1,4 +1,9 @@
 <?php
+
+/*
+ This model contains all the methods relevant to a particular review.
+ */
+
 class ReviewModel {
 
 	private $userPresent;

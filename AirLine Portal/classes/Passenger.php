@@ -1,12 +1,16 @@
 <?php
 
+/*
+ This class is used to store the details relevant to a passenger.
+ */
+
 class Passenger {
 	private $_passengerId;
 	private $_ticketId;
 	private $_fname;
 	private $_lname;
 	private $_age;
-	
+
 
 
 	function setpassengerId($passengerId) {
@@ -45,7 +49,7 @@ class Passenger {
 		return $this->_age;
 	}
 
-	
+
 }
 
 ?>

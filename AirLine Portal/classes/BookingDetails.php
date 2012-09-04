@@ -1,5 +1,9 @@
 <?php
 
+/*
+ This class is used to store details relevant to a particular booking.
+ */
+
 class BookingDetails {
 	private $_ticketId;
 	private $_flightName;
@@ -10,14 +14,14 @@ class BookingDetails {
 	private $_destination;
 	private $_fare;
 	private $_ticketMiles;
-	
+
 	function getTicketMiles(){
 		return $this->_ticketMiles;
 	}
-	
+
 	function setTicketMiles($ticketMiles)
 	{
-		$this->_ticketMiles=$ticketMiles;	
+		$this->_ticketMiles=$ticketMiles;
 	}
 
 	function setTicketId($ticketId) {

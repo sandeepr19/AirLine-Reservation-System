@@ -1,12 +1,16 @@
 <?php
 
+/*
+ This class is used to store details relevant to a particular payment.
+ */
+
 class Payment {
 	private $_paymentId;
 	private $_ticketId;
 	private $_paymentDate;
 	private $_paymentMode;
 	private $_amount;
-	
+
 	function setpaymentId($paymentId) {
 		$this->_paymentId = $paymentId;
 	}
@@ -43,7 +47,7 @@ class Payment {
 		return $this->_amount;
 	}
 
-	
+
 
 
 }

@@ -1,5 +1,9 @@
 <?php
 
+/*
+ This class is used to store details relevant to a particular flight
+ */
+
 class FlightDetails {
 	private $_flightClassId;
 	private $_numberOfTickets;
@@ -12,17 +16,17 @@ class FlightDetails {
 	private $_fare;
 	private $_seatsAvailable;
 	private $_flightMiles;
-	
+
 	function setFlightMiles($flightMiles)
 	{
 		$this->_flightMiles=$flightMiles;
 	}
-	
+
 	function getFlightMiles()
 	{
 		return $this->_flightMiles;
 	}
-	
+
 	function setFlightClassId($flightClassId) {
 		$this->_flightClassId = $flightClassId;
 	}

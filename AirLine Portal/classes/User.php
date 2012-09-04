@@ -1,5 +1,9 @@
 <?php
 
+/*
+ This class is used to store details of a user.
+ */
+
 class User {
 	private $_userId;
 	private $_loginId;
@@ -12,12 +16,12 @@ class User {
 	private $_securityQuestion;
 	private $_securityAnswer;
 	private $_miles;
-	
+
 	function setMiles($miles)
 	{
 		$this->_miles=$miles;
 	}
-	
+
 	function getMiles()
 	{
 		return $this->_miles;

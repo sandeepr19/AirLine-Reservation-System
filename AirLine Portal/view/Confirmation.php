@@ -1,7 +1,7 @@
 <html>
 <head>
 <link href="style.css" rel="stylesheet" type="text/css" />
-<title>Search Flight</title>
+<title>Confirmation</title>
 <script>
 function logOut()
 {

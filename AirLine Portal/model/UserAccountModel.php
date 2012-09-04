@@ -1,4 +1,8 @@
 <?php
+
+/*
+ This model contains all the methods relevant to a particular user.
+ */
 class UserAccountModel {
 
 	private $userPresent;
@@ -49,7 +53,7 @@ class UserAccountModel {
 
 
 	function getUserForID($userId){
-		
+
 		$user = new User();
 		ini_set('display_errors', 'On');
 		$db = "w4111c.cs.columbia.edu:1521/adb";
@@ -71,7 +75,7 @@ class UserAccountModel {
 			$user->setSecurityQuestion($row['QUESTION']);
 			$user->setMiles($row['MILES']);
 		}
-			return $user;
+		return $user;
 	}
 
 	function createUser($user)
@@ -88,8 +92,8 @@ class UserAccountModel {
 		$query = "insert into users values($max,'".$user->getLoginId()."','".$user->getPassword()."','".$user->getFirstName()."','".$user->getLastName()."','".$user->getAddress()."','".$user->getEmailId()."','".$user->getPhoneNumber()."','".$user->getSecurityQuestion()."','".$user->getSecurityAnswer()."','0')";
 		$stmt2=oci_parse($conn,$query);
 		$result=oci_execute($stmt2);
-		
-		
+
+
 		if($result)
 		{
 			$maxQuery="Select max(user_id) from users";
@@ -101,14 +105,14 @@ class UserAccountModel {
 			}
 			return $max;
 		}else {
-			
-		return 0;
-			
-	
+				
+			return 0;
+				
+
 		}
 
 	}
-	
+
 	function updateUser()
 	{
 		$user = unserialize($_SESSION['userToBeUpdated']);
@@ -125,7 +129,7 @@ class UserAccountModel {
 		}else {
 			return 0;
 		}
-		
+
 	}
 
 

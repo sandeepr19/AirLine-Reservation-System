@@ -1,4 +1,9 @@
 <?php
+/*
+ This controller directs the control to a particular model
+ depending on the action.
+ */
+
 session_start();
 include ("../classes/User.php");
 include ("../classes/BookingDetails.php");
@@ -37,12 +42,12 @@ if($_SESSION['action']=="login")
 }
 else if($_SESSION['action']=="home")
 {
-		unset($_SESSION['lastPurchased']);
-		unset($_SESSION['discount']);
-		$userId=$_SESSION['userId'];
-		$arrayOfBookings=$bookingModel->getBookings($userId);
-		$_SESSION['bookingsArray']=serialize($arrayOfBookings);
-		header("Location: ../view/Startup.php");
+	unset($_SESSION['lastPurchased']);
+	unset($_SESSION['discount']);
+	$userId=$_SESSION['userId'];
+	$arrayOfBookings=$bookingModel->getBookings($userId);
+	$_SESSION['bookingsArray']=serialize($arrayOfBookings);
+	header("Location: ../view/Startup.php");
 }
 else if ($_SESSION['action']=="registerUser")
 {
@@ -59,7 +64,7 @@ else if ($_SESSION['action']=="registerUser")
 		$arrayOfBookings=$bookingModel->getBookings($user->getUserId());
 		$_SESSION['bookingsArray']=serialize($arrayOfBookings);
 		header("Location: ../view/Startup.php");
-	}else 
+	}else
 	{
 		session_destroy();
 		header("Location: ../view/Error.php");
@@ -138,7 +143,7 @@ else if ($_SESSION['action']=="insertReview")
 }
 else if ($_SESSION['action']=="purchaseTicket")
 {
-	
+
 	$result=$bookingModel->purchaseTicket();
 	if($result>0)
 	{
@@ -168,6 +173,6 @@ else if ($_SESSION['action']=="updateUser")
 else if ($_SESSION['action']=="searchFlights")
 {
 	header("Location: ../view/Search.php");
-	
+
 }
 ?>

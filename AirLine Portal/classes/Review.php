@@ -1,20 +1,24 @@
 <?php
 
+/*
+ This class is used to store details relevant to a review
+ */
+
 class Review {
 	private $_flightName;
 	private $_reviewDescription;
 	private $_flightDescription;
 	private $_travelDate;
 	private $_flightClassId;
-	
+
 	function setFlightId($flightId){
 		$this->_flightClassId=$flightId;
 	}
-	
+
 	function getFlightId(){
 		return $this->_flightClassId;
 	}
-	
+
 	function setFlightName($flightName) {
 		$this->_flightName = $flightName;
 	}
